@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Button Name="btnCadastrar" Content="cadastrar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="91" Margin="10,10,0,0" Height="30" Click="btnCadastrar_Click"/>
+
     </Grid>
 </Window>

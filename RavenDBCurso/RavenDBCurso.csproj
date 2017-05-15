@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -92,6 +93,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\01 Model\Model.csproj">
+      <Project>{29ca2588-6124-4c85-ab41-036f15d96868}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="02 Repositorio\Repositorio.csproj">
+      <Project>{740cbb04-61bc-420d-b7e8-f4a05140ac8d}</Project>
+      <Name>Repositorio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
