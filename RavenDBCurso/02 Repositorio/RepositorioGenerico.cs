@@ -21,15 +21,22 @@ namespace Repositorio
             store.Initialize();
         }
 
-        public void Cadastrar(Cliente cliente)
+        public string Cadastrar(Cliente cliente)
         {
             using(IDocumentSession session = store.OpenSession())
             {
                 session.Store(cliente);
                 session.SaveChanges();
             }
+            return cliente.id;
         }
 
-
+        public Cliente Consulte(string idDoClienteSalvo)
+        {
+            using (IDocumentSession session = store.OpenSession())
+            {
+                return session.Load<Cliente>(idDoClienteSalvo);
+            }
+        }
     }
 }

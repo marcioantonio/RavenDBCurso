@@ -27,31 +27,41 @@ namespace RavenDBCurso
             InitializeComponent();
         }
 
+        public string idDoClienteSalvo { get; set; }
         private void btnCadastrar_Click(object sender, RoutedEventArgs e)
         {
             var cliente = new Cliente
             {
-                Nome = "msrcio",
-                Cpf = "6854651",
-                Email = "fkjnvfv@ckvjb.com",
-                Telefone = "95126562",
+                Nome = txtNome.Text,
+                Cpf = txtCpf.Text,
+                Email = txtEmail.Text,
+                Telefone = txtTelefone.Text,
                 Endereco = new Endereco
                 {
-                    Pais = "brazil",
-                    Estado = "mg",
-                    Cidade = "fronteira",
-                    Logradouro = "matinha",
-                    Rua = "43",
-                    Numero = 200,
-                    Complemento = "portão branco"
+                    Pais = txtPais.Text,
+                    Estado = txtEstado.Text,
+                    Cidade = txtCidade.Text,
+                    Logradouro = txtLogradouro.Text,
+                    Rua = txtRua.Text,
+                    Numero = txtNumero.Text,
+                    
+                    Complemento = txtComplemento.Text
                 }
               
             };
 
             var repo = new RepositorioGenerico();
-            repo.Cadastrar(cliente);
+            var idCliente = repo.Cadastrar(cliente);
+            idDoClienteSalvo = idCliente; 
 
-            MessageBox.Show("cadastro feito com sucesso");
+            MessageBox.Show($"cadastro feito com sucesso{idCliente}");
+        }
+
+        private void btnConsulte_Click(object sender, RoutedEventArgs e)
+        {
+            var repo = new RepositorioGenerico();
+            var cliente = repo.Consulte(idDoClienteSalvo);
+            MessageBox.Show($"cliente {cliente.Nome} consultado");
         }
     }
 }
