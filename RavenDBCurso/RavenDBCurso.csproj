@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{16F8F42E-115E-47BB-96C9-9E8D41AAC586}</ProjectGuid>
+    <ProjectGuid>{5FF089EF-FB2C-48EB-B995-E471CFF3831A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>RavenDBCurso</RootNamespace>
     <AssemblyName>RavenDBCurso</AssemblyName>
@@ -35,7 +35,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -95,13 +94,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\01 Model\Model.csproj">
-      <Project>{29ca2588-6124-4c85-ab41-036f15d96868}</Project>
-      <Name>Model</Name>
+    <ProjectReference Include="..\01 - Model\01 - Model.csproj">
+      <Project>{936009f5-d257-4763-8e3d-8643fdbf2160}</Project>
+      <Name>01 - Model</Name>
     </ProjectReference>
-    <ProjectReference Include="02 Repositorio\Repositorio.csproj">
-      <Project>{740cbb04-61bc-420d-b7e8-f4a05140ac8d}</Project>
-      <Name>Repositorio</Name>
+    <ProjectReference Include="02 - Repositorio\02 - Repositorio.csproj">
+      <Project>{8ac20f56-7b07-4d1a-b3c2-e6333b8e443f}</Project>
+      <Name>02 - Repositorio</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

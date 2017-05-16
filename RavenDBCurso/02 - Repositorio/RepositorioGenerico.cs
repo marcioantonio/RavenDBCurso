@@ -1,11 +1,13 @@
-﻿using Model;
+﻿using _01___Model;
 using Raven.Client;
 using Raven.Client.Document;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Repositorio
+namespace _02___Repositorio
 {
     public class RepositorioGenerico
     {
@@ -23,7 +25,7 @@ namespace Repositorio
 
         public string Cadastrar(Cliente cliente)
         {
-            using(IDocumentSession session = store.OpenSession())
+            using (IDocumentSession session = store.OpenSession())
             {
                 session.Store(cliente);
                 session.SaveChanges();

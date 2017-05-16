@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Model
+namespace _01___Model
 {
     public class Endereco
     {
@@ -19,6 +21,5 @@ namespace Model
         public string Pais { get; set; }
 
         public string Rua { get; set; }
-
     }
 }

@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using _01___Model;
+using Model;
 using Repositorio;
 using System;
 using System.Collections.Generic;
@@ -44,22 +45,22 @@ namespace RavenDBCurso
                     Logradouro = txtLogradouro.Text,
                     Rua = txtRua.Text,
                     Numero = txtNumero.Text,
-                    
+
                     Complemento = txtComplemento.Text
                 }
-              
+
             };
 
-            var repo = new RepositorioGenerico();
+            var repo = new _02___Repositorio.RepositorioGenerico();
             var idCliente = repo.Cadastrar(cliente);
-            idDoClienteSalvo = idCliente; 
+            idDoClienteSalvo = idCliente;
 
             MessageBox.Show($"cadastro feito com sucesso{idCliente}");
         }
 
         private void btnConsulte_Click(object sender, RoutedEventArgs e)
         {
-            var repo = new RepositorioGenerico();
+            var repo = new _02___Repositorio.RepositorioGenerico();
             var cliente = repo.Consulte(idDoClienteSalvo);
             MessageBox.Show($"cliente {cliente.Nome} consultado");
         }

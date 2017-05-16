@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Model
+namespace _01___Model
 {
-   public class Cliente
+    public class Cliente
     {
         public string id { get; set; }
 
