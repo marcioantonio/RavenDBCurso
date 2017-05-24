@@ -5,38 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RavenDBCurso"
         mc:Ignorable="d"
-        Title="MainWindow" Height="431" Width="626">
+        Title="MainWindow" Height="431" Width="663">
     <Grid>
-        <Button Name="btnCadastrar" Content="cadastrar" HorizontalAlignment="Left" Width="91" Margin="137,363,0,0" Click="btnCadastrar_Click" Height="33" VerticalAlignment="Top"/>
-        <Button Name="btnConsulte" Content="consutar" HorizontalAlignment="Left" Margin="478,146,0,0" VerticalAlignment="Top" Width="91" Height="30" Click="btnConsulte_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="12,22,0,0" TextWrapping="Wrap" Text="Nome" VerticalAlignment="Top"/>
-        <TextBox Name="txtNome" HorizontalAlignment="Left" Height="23" Margin="91,19,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
-        <TextBlock HorizontalAlignment="Left" Margin="12,50,0,0" TextWrapping="Wrap" Text="CPF" VerticalAlignment="Top"/>
-        <TextBox Name="txtCpf" HorizontalAlignment="Left" Height="23" Margin="91,47,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
-        <TextBlock HorizontalAlignment="Left" Margin="12,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Telefone"/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
-        <TextBox Name="txtTelefone" HorizontalAlignment="Left" Height="23" Margin="91,75,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
-        <TextBlock HorizontalAlignment="Left" Margin="12,106,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top"/>
-        <TextBox Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="91,103,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
-        <TextBlock HorizontalAlignment="Left" Margin="137,135,0,0" TextWrapping="Wrap" Text="Endereço" VerticalAlignment="Top" Width="54" Height="18"/>
-        <TextBlock HorizontalAlignment="Left" Margin="12,171,0,0" TextWrapping="Wrap" Text="Logradouro" VerticalAlignment="Top"/>
-        <TextBox Name="txtLogradouro" HorizontalAlignment="Left" Height="23" Margin="91,168,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
-        <TextBlock HorizontalAlignment="Left" Margin="12,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="91,196,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
-        <TextBlock HorizontalAlignment="Left" Margin="12,227,0,0" TextWrapping="Wrap" Text="Numero" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="91,224,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="91,252,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
-        <TextBlock HorizontalAlignment="Left" Margin="12,282,0,0" TextWrapping="Wrap" Text="Cidade" VerticalAlignment="Top"/>
-        <TextBox Name="txtCidade" HorizontalAlignment="Left" Height="23" Margin="91,279,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
-        <TextBlock HorizontalAlignment="Left" Margin="12,310,0,0" TextWrapping="Wrap" Text="Estado" VerticalAlignment="Top"/>
-        <TextBox Name="txtEstado" HorizontalAlignment="Left" Height="23" Margin="91,307,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
-        <TextBlock HorizontalAlignment="Left" Margin="12,338,0,0" TextWrapping="Wrap" Text="País" VerticalAlignment="Top"/>
-        <TextBox Name="txtPais" HorizontalAlignment="Left" Height="23" Margin="91,335,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
-        <TextBlock HorizontalAlignment="Left" Margin="12,199,0,0" TextWrapping="Wrap" Text="Rua" VerticalAlignment="Top"/>
-        <TextBox Name="txtRua" HorizontalAlignment="Left" Height="23" Margin="91,196,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
-        <TextBlock HorizontalAlignment="Left" Margin="12,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox Name="txtNumero" HorizontalAlignment="Left" Height="23" Margin="91,224,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
-        <TextBox Name="txtComplemento" HorizontalAlignment="Left" Height="23" Margin="91,252,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,252,0,0" TextWrapping="Wrap" Text="Complemento" VerticalAlignment="Top"/>
+        <Button x:Name="btnNovo" Content="Novo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="91" Height="30" Click="btnNovo_Click"/>
+        <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="106,10,0,0" VerticalAlignment="Top" Width="91" Height="30" Click="btnEditar_Click"/>
+        <Button x:Name="btnExcluir" Content="Excluir" HorizontalAlignment="Left" Margin="202,10,0,0" VerticalAlignment="Top" Width="91" Height="30" Click="btnExcluir_Click"/>
+        <ListView x:Name="lstCliente"  ItemsSource="{Binding}" Margin="10,45,10,10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="150" Header="Nome" DisplayMemberBinding="{Binding Nome}" />
+                    <GridViewColumn Width="150" Header="CPF" DisplayMemberBinding="{Binding Cpf}" />
+                    <GridViewColumn Width="150" Header="Telefone" DisplayMemberBinding="{Binding Telefone}" />
+                    <GridViewColumn Width="150" Header="E-Mail" DisplayMemberBinding="{Binding Email}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="btnAtualizar" Content="Atualizar" HorizontalAlignment="Left" Margin="298,10,0,0" VerticalAlignment="Top" Width="91" Height="30" Click="btnAtualizar_Click"/>
 
     </Grid>
 </Window>

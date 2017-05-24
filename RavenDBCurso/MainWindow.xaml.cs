@@ -1,68 +1,71 @@
 ﻿using _01___Model;
-using Model;
-using Repositorio;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace RavenDBCurso
 {
-    /// <summary>
-    /// Interação lógica para MainWindow.xam
-    /// </summary>
     public partial class MainWindow : Window
     {
+
+        public string idDoClienteSalvo { get; set; }
+        public _02___Repositorio.RepositorioGenerico Repositorio { get; set; }
+
+
         public MainWindow()
         {
             InitializeComponent();
+            Repositorio = new _02___Repositorio.RepositorioGenerico();
+            CarregueElementosDoBancoDeDados();
+        }
+        private void btnNovo_Click(object sender, RoutedEventArgs e)
+        {
+            var cliente = ChameOEditorDeCliente(new Cliente);
+
+            Repositorio.Cadastrar(cliente);
+            CarregueElementosDoBancoDeDados();
         }
 
-        public string idDoClienteSalvo { get; set; }
-        private void btnCadastrar_Click(object sender, RoutedEventArgs e)
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
-            var cliente = new Cliente
+            if (lstCliente.SelectedItem == null)
             {
-                Nome = txtNome.Text,
-                Cpf = txtCpf.Text,
-                Email = txtEmail.Text,
-                Telefone = txtTelefone.Text,
-                Endereco = new Endereco
-                {
-                    Pais = txtPais.Text,
-                    Estado = txtEstado.Text,
-                    Cidade = txtCidade.Text,
-                    Logradouro = txtLogradouro.Text,
-                    Rua = txtRua.Text,
-                    Numero = txtNumero.Text,
+                MessageBox.Show("Selecione um Cliente");
+                return;
+            }
+            var cliente = (Cliente)lstCliente.SelectedItem;
+            cliente = ChameOEditorDeCliente(cliente);
 
-                    Complemento = txtComplemento.Text
-                }
-
-            };
-
-            var repo = new _02___Repositorio.RepositorioGenerico();
-            var idCliente = repo.Cadastrar(cliente);
-            idDoClienteSalvo = idCliente;
-
-            MessageBox.Show($"cadastro feito com sucesso{idCliente}");
+            Repositorio.Atualizar(cliente);
+            CarregueElementosDoBancoDeDados();
         }
 
-        private void btnConsulte_Click(object sender, RoutedEventArgs e)
+        private  Cliente ChameOEditorDeCliente(Cliente cliente)
         {
-            var repo = new _02___Repositorio.RepositorioGenerico();
-            var cliente = repo.Consulte(idDoClienteSalvo);
-            MessageBox.Show($"cliente {cliente.Nome} consultado");
+            var formCliente = new FormCliente(cliente);
+            formCliente.ShowDialog();
+            cliente = formCliente.Cliente;
+            return cliente;
+        }
+
+        private void btnExcluir_Click(object sender, RoutedEventArgs e)
+        {
+            if(lstCliente.SelectedItem == null)
+            {
+                MessageBox.Show("Selecione um Cliente");
+                return;
+            }
+            var cliente = ((Cliente)(lstCliente.SelectedItem));
+            Repositorio.Remover(cliente.Id);
+            CarregueElementosDoBancoDeDados();
+        }
+
+        private void CarregueElementosDoBancoDeDados()
+        {
+            lstCliente.DataContext = Repositorio.Liste();
+        }
+
+        private void btnAtualizar_Click(object sender, RoutedEventArgs e)
+        {
+            CarregueElementosDoBancoDeDados();
         }
     }
 }

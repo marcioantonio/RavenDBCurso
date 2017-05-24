@@ -8,7 +8,12 @@ namespace _01___Model
 {
     public class Cliente
     {
-        public string id { get; set; }
+        public Cliente()
+        {
+            Endereco = new Endereco();
+        }
+
+        public string Id { get; set; }
 
         public string Nome { get; set; }
 
